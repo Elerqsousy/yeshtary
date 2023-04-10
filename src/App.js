@@ -14,6 +14,7 @@ function App() {
           <Routes>
             <Route
               index
+              path='/'
               element={
                 <React.Suspense fallback={<>...</>}>
                   <Home />
