@@ -1,0 +1,167 @@
+@import './variables/colors.scss';
+@import './variables/fonts.scss';
+@import './variables/screens.scss';
+
+.header {
+  background: $--primary-color;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 .92px 3px #00000080;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  .first-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    margin: auto;
+  }
+
+  .left-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    .menu-btn {
+      display: flex;
+      align-items: center;
+      border: 0;
+      background: transparent;
+
+      .menu-icon {
+        height: auto;
+        width: 24px;
+      }
+    }
+
+    .logo {
+      max-width: 124px;
+      height: auto;
+    }
+  }
+
+  .right-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    .list-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .cart-container {
+        position: relative;
+        width: 32px;
+
+        .cart-count {
+          position: absolute;
+          top: 0;
+          right: 0;
+          min-width: 15px;
+          height: 15px;
+          text-align: center;
+          border-radius: 50%;
+          background-color: white;
+          font-size: 12px;
+          line-height: 15px;
+        }
+      }
+      .description {
+        display: none;
+        font-weight: $sbold;
+        color: white;
+      }
+    }
+  }
+}
+
+
+@media only screen and (min-width: $sm) {
+  .header {
+    .first-nav {
+      padding: 5px 30px;
+      max-width: $smmax;
+    }
+
+    .left-container {
+      gap: 28px;
+
+      .logo {
+        max-width: 180px;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: $md) {
+  .header {
+    .first-nav {
+      padding: 5px 45px;
+      max-width: $mdmax;
+    }
+
+    .left-container {
+      gap: 30px;
+
+      .logo {
+        max-width: 190px;
+      }
+    }
+  }
+}
+@media only screen and (min-width: $lg) {
+  .header {
+    .first-nav {
+      padding: 15px 30px;
+      max-width: $lgmax;
+    }
+
+    .left-container {
+      gap: 30px;
+
+      .logo {
+        max-width: 210px;
+      }
+    }
+
+    .right-container {
+      .list-item {
+        .description {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: $xl) {
+  .header {
+    .first-nav {
+      padding: 15px 0;
+      margin: auto;
+      max-width: $xlmax;
+    }
+
+    .left-container {
+      gap: 28px;
+    }
+
+    .right-container {
+      gap: 48px;
+    }
+  }
+}
+
+@media only screen and (min-width: $sxl) {
+  .header {
+    .first-nav {
+      max-width: $sxlmax;
+    }
+
+    .left-container {
+      gap: 28px;
+    }
+  }
+}
