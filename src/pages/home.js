@@ -1,17 +1,23 @@
 import React from 'react';
 import Banner from 'components/banner';
 import PageContent from 'components/shared/pageContent';
-import ProductItem from 'components/shared/productItem';
+import ItemsFreeDisplay from 'components/itemsFreeDisplay';
 
-const Home = () => {
-  return (
-    <React.Fragment>
-      <Banner />
-      <PageContent>
-        <ProductItem />
-      </PageContent>
-    </React.Fragment>
-  );
-};
+class Home extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <Banner />
+        <PageContent>
+          <ItemsFreeDisplay addCartItem={this.props.addCartItem} />
+        </PageContent>
+      </React.Fragment>
+    );
+  }
+}
 
 export default Home;

@@ -1,38 +1,13 @@
 import classNames from 'classnames';
-import uuid from 'react-uuid';
-
 import '../styles/shared.scss';
 
-import itemImg from 'images/dynamic/item-one.jpg';
-import adidasSmall from 'images/dynamic/adidas-small.png';
-import adidasBig from 'images/dynamic/adidas-big.png';
-
-const dummyProduct = {
-  name: 'Adidas Ultimashow Indigo BackPack',
-  price: 1629,
-  priceText: '1,629',
-  productImage: itemImg,
-  brandImage: adidasBig,
-  brandSmallImage: adidasSmall,
-  brandName: 'Adidas',
-  currency: 'EGP',
-  id: uuid(),
-};
-
-const ProductItem = ({
-  data = dummyProduct,
-  onPurchase = () => {},
-  className,
-}) => {
-
+const ProductItem = ({ data = {}, addCartItem = () => {}, className }) => {
   const onClick = (e) => {
-    e.stopPropagation()
-    onPurchase()
-  }
+    e.stopPropagation();
+    addCartItem(data);
+  };
   return (
-    <div
-      className={classNames('product-item-container', className)}
-    >
+    <div className={classNames('product-item-container', className)}>
       <div className='content-container'>
         <div className='product-img-container'>
           <img

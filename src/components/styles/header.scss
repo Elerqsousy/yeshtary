@@ -5,10 +5,11 @@
 .header {
   background: $--primary-color;
   transition: all 0.4s ease-in-out;
-  box-shadow: 0 .92px 3px #00000080;
+  box-shadow: 0 0.92px 3px #00000080;
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 5;
 
   .first-nav {
     display: flex;
@@ -76,7 +77,6 @@
     }
   }
 }
-
 
 @media only screen and (min-width: $sm) {
   .header {

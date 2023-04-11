@@ -3,38 +3,80 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from 'pages/home';
 import Header from 'components/header';
 import Page from 'components/shared/page';
-// const Home = React.lazy(() => import('./pages/home'));
+const Cart = React.lazy(() => import('./pages/cart'));
 
-function App() {
-  return (
-    <React.Fragment>
-      <Header />
-      <Page>
-        <Router>
-          <Routes>
-            <Route
-              index
-              path='/'
-              element={
-                <React.Suspense fallback={<>...</>}>
-                  <Home />
-                </React.Suspense>
-              }
-            />
-            {/* <Route
-          path='about'
-          element={
-            <React.Suspense fallback={<>...</>}>
-              <About />
-            </React.Suspense>
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      cartItems: [],
+      count: 0,
+    };
+  }
+
+  addCartItem = (item) => {
+    let product = this.state.cartItems.find((p) => p.id === item.id);
+    if (product) {
+      this.setState({
+        cartItems: this.state.cartItems.map((p) => {
+          if (p.id === item.id) {
+            return { ...p, quantity: p.quantity + 1 };
           }
-        /> */}
-            <Route path='*' element={<>Not found</>} />
-          </Routes>
-        </Router>
-      </Page>
-    </React.Fragment>
-  );
+          return p;
+        }),
+      });
+    } else {
+      this.setState({
+        cartItems: [...this.state.cartItems, { ...item, quantity: 1 }],
+      });
+    }
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  removeItem = (id) => {
+    let countToRemove;
+    const newCart = this.state.cartItems.filter((item) => {
+      countToRemove = item.quantity;
+      return item.id !== id;
+    });
+    this.setState({
+      count: this.state.count - countToRemove,
+      cartItems: newCart,
+    });
+    console.log(id)
+  };
+
+  render() {
+    return (
+      <React.Fragment>
+        <Page>
+          <Router>
+            <Header
+              count={this.state.count}
+            />
+            <Routes>
+              <Route
+                index
+                path='/'
+                element={<Home addCartItem={this.addCartItem} />}
+              />
+              <Route
+                path='/cart'
+                element={
+                  <React.Suspense fallback={<>...</>}>
+                    <Cart
+                    cartItems={this.state.cartItems}
+                    removeItem={this.removeItem}
+                    />
+                  </React.Suspense>
+                }
+              />
+            </Routes>
+          </Router>
+        </Page>
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;

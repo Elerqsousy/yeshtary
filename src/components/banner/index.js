@@ -6,36 +6,50 @@ import '../styles/banner.scss';
 import bannerOneIcn from 'images/dynamic/banner1.jpg';
 import bannerTwoIcn from 'images/dynamic/banner2.png';
 
-const Banner = () => {
-  const [active, setActive] = React.useState(true)
-
-  React.useEffect(() => {
-    const setTimer = setInterval(() => {
-      setActive(!active)
-    }, 7000)
-    return () => {
-      clearInterval(setTimer);
+class Banner extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      active: true,
     };
-  }, [active]);
+  }
 
-  return (
-    <div className='banner-container'>
-      <div className='images-container'>
-        <div
-          className={classNames('img-container one', { 'active-item': active })}
-        >
-          <img src={bannerOneIcn} alt='a man' />
-        </div>
-        <div
-          className={classNames('img-container two', {
-            'active-item': !active
-          })}
-        >
-          <img src={bannerTwoIcn} alt='a woman' />
+  setTimer = () => (
+    setInterval(() => {
+      this.setState({ active: !this.state.active });
+    }, 7000)
+  )
+
+  componentDidMount() {
+    this.setTimer();
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.setTimer);
+  }
+
+  render() {
+    return (
+      <div className='banner-container'>
+        <div className='images-container'>
+          <div
+            className={classNames('img-container one', {
+              'active-item': this.state.active,
+            })}
+          >
+            <img src={bannerOneIcn} alt='a man' />
+          </div>
+          <div
+            className={classNames('img-container two', {
+              'active-item': !this.state.active,
+            })}
+          >
+            <img src={bannerTwoIcn} alt='a woman' />
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default Banner;

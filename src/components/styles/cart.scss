@@ -1,0 +1,82 @@
+@import './variables/colors.scss';
+@import './variables/fonts.scss';
+@import './variables/screens.scss';
+
+.cart-page-container {
+  padding-top: 40px;
+  max-width: 90vw;
+  overflow: hidden;
+
+  .items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 460px;
+    padding: 10px;
+    height: 100%;
+    overflow: scroll;
+
+    .item-container {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border: 0.75px solid #ececec;
+      border-radius: 20px;
+      width: 100%;
+      padding: 8px;
+
+      .item-img {
+        width: calc(100% / 5);
+        height: auto;
+      }
+
+      .description-container {
+        display: flex;
+        flex-direction: column;
+        width: calc(100% / 5 * 4);
+        .name {
+          color: #1d1d1b;
+          font-size: 14px;
+          font-weight: $sbold;
+          margin-bottom: 3px;
+        }
+        .quantity {
+          color: #3c3c3b;
+          font-size: 12px;
+          font-weight: $sbold;
+        }
+
+        .cta-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-weight: $sbold;
+          color: $--primary-color;
+          margin-top: 10px;
+
+          .cta-btn {
+            border-radius: 12px !important;
+            font-size: 10px;
+            height: 24px;
+            padding: 5px 18px;
+            width: 80px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: $sm) {
+}
+
+@media only screen and (min-width: $md) {
+}
+@media only screen and (min-width: $lg) {
+}
+
+@media only screen and (min-width: $xl) {
+}
+
+@media only screen and (min-width: $sxl) {
+}
