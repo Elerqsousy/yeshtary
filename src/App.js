@@ -61,7 +61,7 @@ class App extends React.Component {
                 element={<Home addCartItem={this.addCartItem} />}
               />
               <Route
-                path='/cart'
+                path='/yeshtary/cart'
                 element={
                   <React.Suspense fallback={<>...</>}>
                     <Cart
