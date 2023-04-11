@@ -57,7 +57,7 @@ class App extends React.Component {
             <Routes>
               <Route
                 index
-                path='/'
+                path='/yeshtary'
                 element={<Home addCartItem={this.addCartItem} />}
               />
               <Route

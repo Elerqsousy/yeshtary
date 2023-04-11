@@ -22,7 +22,7 @@ class Header extends React.Component {
             <button onClick={() => {}} className='menu-btn'>
               <img className='menu-icon' src={menuIcn} alt='menu' />
             </button>
-            <Link to='/'>
+            <Link to='/yeshtary'>
               <img className='logo' src={Logo} alt='logo' />
             </Link>
           </div>
