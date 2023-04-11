@@ -28,7 +28,7 @@ class Header extends React.Component {
           </div>
           <ul className='right-container'>
             <li>
-              <Link className='list-item' to='/cart'>
+              <Link className='list-item' to='/yeshtary/cart'>
                 <div className='cart-container'>
                   <span className='cart-count'>{this.props.count}</span>
                   <img className='icon' src={cartIcn} alt='Cart' />
